@@ -1,0 +1,27 @@
+aside {
+    float: left;
+    margin: 0 1.5%;
+    width: 20%;
+  }
+
+  section {
+    float: right;
+    width: 70%;
+  }
+
+  .max{
+      
+      margin-left: 80px;
+  }
+
+  .ticket{
+      border-style: solid;
+      margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: auto;
+  }
+
+  .value{
+    margin-left: 40px;
+}
