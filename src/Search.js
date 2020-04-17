@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import './Search.css'
+import OneWayTicket from './OneWayTicket'
+import ReturnTicket from './ReturnTicket'
 
   class Search extends React.Component{
   constructor(){
@@ -20,25 +22,6 @@ import './Search.css'
       flights: []
       };
   }
-
-  
-
-//   componentDidMount() {
-//     this.setState({ isLoading: true });
-//     axios.get('/flights.json')
-//     .then(result => 
-//         this.setState({
-//           flights: result.data,
-//             isLoading: false
-//         })
-//     )
-//     .catch(error => 
-//         this.setState({
-//             error,
-//             isLoading: false
-//         })
-//     );
-// }
 
 handleChange = (e) => {
   this.setState({
@@ -143,9 +126,7 @@ handleSubmit = () => {
         </aside>
         <section>
 
-          {/* {this.state.submitted === true && this.state.tabKey === 'oneway' ? (
-            <h3>{this.state.originCity} > {this.state.destinationCity}</h3>
-          ) : <h3>Please search on the right</h3>} */}
+          <h1 align='center'>Search Results</h1>
 
 
           {this.state.submitted === true && this.state.tabKey === 'oneway' &&
@@ -162,13 +143,8 @@ handleSubmit = () => {
                                        flight.price <= this.state.price &&
                                        this.state.submitted == true &&
                                        this.state.tabKey == 'oneway' ? (
-                                       <div class="ticket">
-                                         <h4>Rs. {flight.price}</h4>
-                                         <h5>{flight.flightNo}</h5>
-                                       <h4>Depart: {flight.departTime}</h4>
-                                       <h4>Arrive: {flight.arriveTime}</h4>
-                                       </div>
-                                ) : <h4>No Flights found with the input data</h4>
+                                       <OneWayTicket price={flight.price} flightNo={flight.flightNo} departTime={flight.departTime} arriveTime={flight.arriveTime}></OneWayTicket>
+                                ) : <br/>
                         })
                       }
 
@@ -190,19 +166,8 @@ handleSubmit = () => {
                                        flight.price <= this.state.price &&
                                        this.state.submitted == true &&
                                        this.state.tabKey == 'return' ? (
-                                       <div class="ticket">
-                                         <h4>Rs. {flight.price}</h4>
-                                         <div style={{float:'left'}}>
-                                         <h5>{flight.flightNo}</h5>
-                                        <h4>Depart: {flight.departTime}</h4>
-                                        <h4>Arrive: {flight.arriveTime}</h4>
-                                        </div>
-                                       <div style={{float:'right'}}>  
-                                         <h5>{flight.returnFlightNo}</h5>
-                                       <h4>Depart: {flight.returnDepartTime}</h4>
-                                       <h4>Arrive: {flight.returnArriveTime}</h4>
-                                       </div>
-                                       </div>
+                                        <ReturnTicket price={flight.price} flightNo={flight.flightNo} departTime={flight.departTime} 
+                                        arriveTime={flight.arriveTime} returnFlightNo={flight.returnFlightNo} returnDepartTime={flight.returnDepartTime} returnArriveTime={flight.returnArriveTime}></ReturnTicket>
                                 ) : <br/>
                         })
                       }
